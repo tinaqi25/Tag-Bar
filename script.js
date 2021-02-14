@@ -101,7 +101,10 @@ document.addEventListener("keyup",function(event){
 //remove a tag by entering deleting
 document.addEventListener("keyup",function(event){
     if(list.length!==0){    
-    if(event.code ==="Backspace"){
+    if(event.code === "Backspace"){
+        if(input.value){
+            return;
+        }else{
         let lastTagId = Math.max(...list);
         let lastTag = document.getElementById(lastTagId);
         lastTag.parentNode.removeChild(lastTag);
@@ -109,6 +112,7 @@ document.addEventListener("keyup",function(event){
         let currentID = Math.max(...list);
         let index = list.indexOf(currentID);
         list.splice(index,1);
+        }
     }
 
 }
